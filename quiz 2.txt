@@ -1,0 +1,31 @@
+1.WAQ to display no of people joined in dec 02
+
+	
+	select count(employee_id)
+	from employees
+	where to_char(hire_date,'dd-mon') like ('02-dec');
+
+
+2. WAQ to display employee iformation with max salary
+
+
+	 select *
+	 from employees
+  	 where salary=(select max(salary)from employees);
+
+
+3. WAQ to display second highest salary
+		
+
+	select max(salary)
+   	from employees
+  	where salary<(select max(salary) from employees);
+
+	 
+
+4. WAQ to display second highest salary departmentwise
+
+	 select department_id, max(Salary)
+  	 from employees
+   	 where salary<(select max(salary) from employees)
+       group by department_id;
